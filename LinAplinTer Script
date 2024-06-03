@@ -53,7 +53,7 @@ http://dl-cdn.alpinelinux.org/alpine/v3.16/community
 
 Masuk ke Linux Alpine
 1. setup-alpine
-2. hostname: linux alpine
+2. hostname: linuxalpine
 3.  enter sampai timezone
 4. timezone : Asia/Jakarta
 5. enter sampai mirror
