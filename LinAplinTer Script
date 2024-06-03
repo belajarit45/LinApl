@@ -39,7 +39,7 @@ INSTALL QEMU
   -drive file=alpine.qcow2,if=virtio \
   -netdev user,id=n1,hostfwd=tcp::2222-:22 \
   -device virtio-net,netdev=n1 \
-  -cdrom alpine.iso -boot d \root
+  -cdrom alpine.iso -boot d \
   -nographic
 
 Login Alphine ( root )
