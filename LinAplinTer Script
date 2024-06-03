@@ -1,0 +1,115 @@
+1. pkg update && pkg upgrade -y
+2. termux-change-repo
+3. pkg install root-repo && pkg install x11-repo
+4. pkg update && pkg upgrade -y
+
+optional akses ssh
+1. pkg install openssh -y
+2. whoami
+3. passwd
+4. sshd (start ssh)
+5. ifconfig 
+
+Akses Windows atau Linux SSH
+ssh -p 8022 tamvan@iptermux
+
+INSTALL QEMU
+1. pkg install qemu-system-x86-64-headless qemu-utils -y
+2. pkg install wget -y
+3. qemu-img create -f qcow2 alpine.qcow2 30G
+4. ls
+5. coba liat bagian bawahnya ada 1 item : alpine .qcow2
+6. wget https://dl-cdn.alpinelinux.org/alpine/v3.18/releases/x86_64/alpine-virt-3.18.4-x86_64.iso
+7. ls
+8. coba liat bagian bawahnya ada 2 item : alpine vir dan alpine .qcow2
+9. mv alpine-virt-3.18.4-x86_64.iso alpine.iso
+10. ls
+11. coba liat bagian bawahnya ada 2 item : alpine.iso dan alpine.qcow2
+12. ls -la
+13. mkdir alpine-linux
+14. ls
+15. ada 3 file yaitu alpine-linux alpine.iso dan alpine.qcow2
+16. mv alpine.iso alpine-linux
+17. mv alpine.qcow2 alpine-linux
+18. ls
+19. ada 1 file alpine-linux
+20. cd alpine-linux
+21. ls -la
+22. qemu-system-x86_64 -smp 2 -m 2048 \
+  -drive file=alpine.qcow2,if=virtio \
+  -netdev user,id=n1,hostfwd=tcp::2222-:22 \
+  -device virtio-net,netdev=n1 \
+  -cdrom alpine.iso -boot d \root
+  -nographic
+
+Login Alphine ( root )
+• vi /etc/apk/repositories
+• hit :i (enter) hit i
+• Tuliskan seperti dibawah ini :
+http://dl-cdn.alpinelinux.org/alpine/v3.16/main
+http://dl-cdn.alpinelinux.org/alpine/v3.16/community
+• hit esc hit :wq (enter)
+
+Masuk ke Linux Alpine
+1. setup-alpine
+2. hostname: linux alpine
+3.  enter sampai timezone
+4. timezone : Asia/Jakarta
+5. enter sampai mirror
+6. mirror : done
+7. setup a user : andrian
+8. full name : linux
+9. ssh key : none
+10. ssh server : none
+11. disk : vda
+12. use : sys
+13.  ERROR SETUP DISK
+
+CARA ATASI ERROR
+1. vi /etc/resolv.conf
+2. Dibawah name server di isi dengan:
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+3. apk update --no-cache
+4. setup-disk
+5. disk use: vda
+6. use : sys
+7. warning erase : y
+8. reboot
+
+Boot start
+1. hit ctrl+a next x
+2. ls -l
+3. qemu-system-x86_64 -smp 2 -m 2048 \
+  -drive file=alpine.qcow2,if=virtio \
+  -netdev user,id=n1,hostfwd=tcp::2222-:22 \
+  -device virtio-net,netdev=n1 \
+  -nographic
+Booting ulang
+1. apk update --no-cache
+2. WARNING WARNING
+3. vi /etc/resolv.conf
+4. Dibawah name server di isi dengan:
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+5.   apk update --no-cache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
