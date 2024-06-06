@@ -1,0 +1,62 @@
+1. pkg update -y && pkg upgrade -y
+2. pkg install openssh -y
+3. whoami
+4. passwd
+5. ifconfig => ipnya yg wlan 192.168.120.93
+6. sshd  => setelah itu buka newtab termux isi kan
+       whoami@ipwlan -p 8022
+       contoh ( ssh u0_a346@192.168.120.93 -p 8022 )
+7.    pkg install qemu-system-x86-64-headless qemu-utils -y
+8.    pkg install wget -y
+9.    qemu-img create -f qcow2 alpine.qcow2 20G
+10.  ls => pastikan sudah terinstal  alpine.qcow2
+11.  buka web resmi nya ( https://alpinelinux.org/downloads/  )
+        cari yg VIRTUAL pilih yang x86_64 klik kanan COPY URL
+12.  wget https://dl-cdn.alpinelinux.org/alpine/v3.20/releases/x86_64/alpine-virt-3.20.0-x86_64.iso  ( wget paste )
+13.  ls  => pastikan ada 2 file alpine-virt.iso dan alpine.qcow2
+14.  ls -la
+15.  mkdir qemu
+16.  ls  => pastikan ada 3 file alpine-virt.iso , alpine.qcow2 , dan qemu
+17.  mv alpine-virt-3.20.0-x86_64.iso qemu
+18.  mv alpine.qcow2 qemu
+19.  ls => pastikan ada 1 file qemu
+20.  cd qemu
+21.  ls -la
+22.  qemu-system-x86_64 -smp 2 -m 2048 \
+  -drive file=alpine.qcow2,if=virtio \
+  -netdev user,id=n1,hostfwd=tcp::6379-:6379,hostfwd=tcp::9000-:9000 \
+  -device virtio-net,netdev=n1 \
+  -cdrom alpine-virt-3.20.0-x86_64.iso -boot d \
+  -nographic
+
+boot ulang
+1. vi /etc/apk/repositories
+2. hit :i (enter) hit i
+       Tuliskan seperti dibawah ini :
+       https://dl-cdn.alpinelinux.org/alpine/v3.20/main/
+       https://dl-cdn.alpinelinux.org/alpine/v3.20/community/
+3.  hit esc hit :wq (enter)
+4.  setup-alpine
+5.  keyboard : us us
+6.  enter sampai timezone
+7.  timezone : Asia/Jakarta
+8.  enter sampai ssh server
+9.  ssh server : none
+10. which disk : vda
+11. how would : sys
+12. erase : y
+13. poweroff ( mematikan )
+14. qemu-system-x86_64 -smp 2 -m 2048 \
+  -drive file=alpine.qcow2,if=virtio \
+  -netdev user,id=n1,hostfwd=tcp::6379-:6379,hostfwd=tcp::9000-:9000 \
+  -device virtio-net,netdev=n1 \
+  -nographic
+
+
+instalasi docker
+1. apk add docker
+2. service docker start
+3. docker run -d -p 9000:9000 --name=my-portainer -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+4. buka browser
+5. tulis ipnya ( 192.168.0.68:9000 )
+6. pilih local
