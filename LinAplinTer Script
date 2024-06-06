@@ -42,6 +42,28 @@ INSTALL QEMU
   -cdrom alpine.iso -boot d \
   -nographic
 
+qemu-system-x86_64 -smp 2 -m 2048 \
+  -drive file=alpine.qcow2,if=virtio \
+  -netdev user,id=n1,hostfwd=tcp::2222-:22 \
+  -device virtio-net,netdev=n1 \
+  -cdrom alpine-virt-3.20.0-x86_64.iso -boot d \
+  -nographic
+
+qemu-system-x86_64 -smp 2 -m 2048 \
+  -drive file=alpine.qcow2,if=virtio \
+  -netdev user,id=n1,hostfwd=tcp::2222-:22,hostfwd=tcp::9000-:9000 \
+  -device virtio-net,netdev=n1 \
+  -cdrom alpine-virt-3.20.0-x86_64.iso -boot d \
+  -nographic
+
+qemu-system-x86_64 -smp 2 -m 2048 \
+  -drive file=alpine.qcow2,if=virtio \
+  -netdev user,id=n1,hostfwd=tcp::6379-:6379,hostfwd=tcp::9000-:9000 \
+  -device virtio-net,netdev=n1 \
+  -cdrom alpine-virt-3.20.0-x86_64.iso -boot d \
+  -nographic
+
+
 Login Alphine ( root )
 • vi /etc/apk/repositories
 • hit :i (enter) hit i
