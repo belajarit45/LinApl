@@ -27,6 +27,11 @@ nano startqemu.sh
 ```BASH
 ,hostfwd=tcp::9000-:9000
 ```
+jika ingin menambahkan ram tambahkan
+```BASH
+2048
+```
+setelah -m atau 1024 ganti menjadi 2048
 hit ctrl + x hit enter
 
 7.
