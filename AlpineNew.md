@@ -23,23 +23,18 @@ ls
 nano startqemu.sh
 ```
 
-6.
-```BASH
-cd ~/alpine/ && ./startqemu.sh
-```
-
-7. tambahkan disamping hostfwd
+6. tambahkan disamping hostfwd
 ```BASH
 ,hostfwd=tcp::9000-:9000
 ```
 hit ctrl + x hit enter
 
-8.
+7.
 ```BASH
 cat startqemu.sh
 ```
 
-9.
+8.
 ```BASH
 ./startqemu.sh
 ```
@@ -47,26 +42,26 @@ Note =>
 username : root
 password : Secret123
 
-10.
+9.
 ```BASH
 docker --version
 ```
-11.
+10.
 ```BASH
 docker run -d -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 ```
 
-12.
+11.
 ```BASH
 docker ps
 ```
 
-13. Buka browser
+12. Buka browser
 ```BASH
 http://localhost:9000
 ```
 
-14. Jika ada kendala sukses web buka web dan gagal login
+13. Jika ada kendala sukses web buka web dan gagal login
 ```BASH
 sudo docker restart portainer to restart Portainer
 ```
