@@ -38,11 +38,13 @@ cat startqemu.sh
 ```BASH
 ./startqemu.sh
 ```
+
+9. Booting Linux Alpine
 Note =>
 username : root
+
 password : Secret123
 
-9.
 ```BASH
 docker --version
 ```
