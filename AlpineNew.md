@@ -40,7 +40,9 @@ cat startqemu.sh
 ```
 
 9. Booting Linux Alpine
+
 Note =>
+
 username : root
 
 password : Secret123
