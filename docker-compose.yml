@@ -1,0 +1,8 @@
+version: "3.3"
+services:
+    app:
+        image: fazalfarhan01/earnapp:lite
+        volumes:
+            - ./etc:/etc/earnapp
+        environment:
+            EARNAPP_UUID: sdk-android-c2a3a0776d06426f8a67317546252a0c
